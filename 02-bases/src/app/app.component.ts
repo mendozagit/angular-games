@@ -1,10 +1,20 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
 })
 export class AppComponent {
-  title = 'bases';
+    public title: string = 'Hola title';
+    public counter: number = 10;
+
+    public OnIncreaseClick(value: number): void {
+        this.counter += value;
+    }
+    /**
+     * onReset
+     */
+    public onReset() {
+        this.counter = 0;
+    }
 }
