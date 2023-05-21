@@ -19,4 +19,26 @@ export class HeroComponent {
     getHeroDescription(): string {
         return `${this.name} - ${this.age}`;
     }
+
+    /**
+     * changeHero
+     */
+    onChangeHero(newName: string): void {
+        this.name = newName;
+    }
+
+    /**
+     * changeAge
+     */
+    public onChangeAge(newAge: number) {
+        this.age = newAge;
+    }
+
+    /**
+     * onResetForm
+     */
+    public onResetForm() {
+        this.name = 'ironMan';
+        this.age = 45;
+    }
 }
