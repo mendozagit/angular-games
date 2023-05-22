@@ -4,4 +4,4 @@ import { Component, OnInit } from '@angular/core';
     selector: 'app-dbz-main-page',
     templateUrl: 'main.page.component.html',
 })
-export class DbzComponent {}
+export class MainPageComponent {}
