@@ -25,7 +25,20 @@ export class MainPageComponent {
      * onNewCharacter
      */
     public onNewCharacter(character: Character): void {
-        console.log('main Page: ' + character.name);
-        console.log('main Page: ' + character.power);
+        this.charaters.push(character);
+
+        // console.log('main Page: ' + character.name);
+        // console.log('main Page: ' + character.power);
+    }
+
+    /**
+     * onDelete
+     */
+    public onDelete(index: number): void {
+        // debugger;
+        const removed = this.charaters.splice(index, 1); // Mutates fruits and returns array of removed items
+        console.log('fruits', this.charaters); // ["mango","apple","berry"]
+        console.log('removed', removed); // ["pine"]
+        // this.charaters = removed;
     }
 }

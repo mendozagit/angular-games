@@ -11,20 +11,18 @@ export class AddCharacterComponent {
     public onNewCharacter = new EventEmitter<Character>();
 
     public character: Character = {
-        name: 'ABC',
-        power: 5,
+        name: '',
+        power: 0,
     };
 
     /**
      * saveCharacter
      */
     public saveCharacter(): void {
-        // debugger;
+        //debugger;
         if (this.character.name.length > 0) {
             this.onNewCharacter.emit(this.character);
-            console.log(this.character);
-            this.character.name = '';
-            this.character.power = 0;
+            this.character = { name: '', power: 0 };
         }
     }
 }
