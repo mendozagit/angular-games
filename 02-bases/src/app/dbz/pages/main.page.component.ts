@@ -7,5 +7,20 @@ import { DbzService } from '../services/dbz.service';
     templateUrl: 'main.page.component.html',
 })
 export class MainPageComponent {
-    constructor(public dbzService: DbzService) {}
+    constructor(private dbzService: DbzService) {}
+
+    get characters(): Character[] {
+        return [...this.dbzService.charaters];
+    }
+
+    public onDeleteCharacter(id: string): void {
+        this.dbzService.onDeleteById(id);
+    }
+
+    /**
+     * addCharacter
+     */
+    public onAddCharacter(character: Character): void {
+        this.dbzService.addCharacter(character);
+    }
 }

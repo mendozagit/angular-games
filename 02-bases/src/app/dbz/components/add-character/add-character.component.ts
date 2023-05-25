@@ -8,9 +8,10 @@ import { Character } from '../../interfaces/Character.Interface';
 })
 export class AddCharacterComponent {
     @Output()
-    public onNewCharacter = new EventEmitter<Character>();
+    public onAddCharacter = new EventEmitter<Character>();
 
     public character: Character = {
+        id: '',
         name: '',
         power: 0,
     };
@@ -21,8 +22,8 @@ export class AddCharacterComponent {
     public saveCharacter(): void {
         //debugger;
         if (this.character.name.length > 0) {
-            this.onNewCharacter.emit(this.character);
-            this.character = { name: '', power: 0 };
+            this.onAddCharacter.emit(this.character);
+            this.character = { id: '', name: '', power: 0 };
         }
     }
 }

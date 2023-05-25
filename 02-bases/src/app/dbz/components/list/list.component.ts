@@ -7,11 +7,12 @@ import { Character } from '../../interfaces/Character.Interface';
     styleUrls: ['./list.component.css'],
 })
 export class ListComponent {
-    @Output() onDeleteEvent = new EventEmitter<number>();
+    @Output() onDeleteEvent = new EventEmitter<string>();
 
     @Input()
     public characterList: Character[] = [
         {
+            id: '',
             name: 'Trunk',
             power: 10,
         },
@@ -21,9 +22,9 @@ export class ListComponent {
      * onDeleteCharacter
      */
     @Output()
-    public onDeleteCharacter(index: number): number {
-        console.log(index);
-        this.onDeleteEvent.emit(index);
-        return index;
+    public onDeleteCharacter(id: string): string {
+        console.log(id);
+        this.onDeleteEvent.emit(id);
+        return id;
     }
 }
