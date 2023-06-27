@@ -49,5 +49,9 @@ export class GifsService {
             });
     }
 
+    public gifs(): Gif[] {
+        return this.gifList;
+    }
+
     constructor(private httpClient: HttpClient) {}
 }
