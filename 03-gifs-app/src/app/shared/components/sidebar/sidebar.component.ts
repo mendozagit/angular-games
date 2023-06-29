@@ -15,6 +15,13 @@ export class SidebarComponent {
     }
 
     /**
+     * onTagClick
+     */
+    public onTagClick(tag: string): void {
+        this.gifService.searchTag(tag);
+    }
+
+    /**
      *
      */
     constructor(private gifService: GifsService) {}

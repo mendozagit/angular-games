@@ -3,6 +3,12 @@
         <div class="card mb-2 text-center bg-dark">
             <!--crear image-->
 
+            <img
+                [src]="gif.images.downsized_medium.url"
+                [alt]="gif.title"
+                class="card-img-top"
+            />
+
             <div class="card-body text-white">
                 <p class="card-text">{{ gif.title }}</p>
             </div>
