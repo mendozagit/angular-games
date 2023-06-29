@@ -24,5 +24,8 @@ export class SidebarComponent {
     /**
      *
      */
-    constructor(private gifService: GifsService) {}
+    constructor(private gifService: GifsService) {
+        const firstTag: string = this.gifService.tagsHistory[0];
+        this.gifService.searchTag(firstTag);
+    }
 }
