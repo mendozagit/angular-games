@@ -33,6 +33,18 @@ export class GifsService {
         localStorage.setItem('history', JSON.stringify(this._tagsHistory));
     }
 
+    /**
+     * readLocalStorage
+     */
+    public readLocalStorage(): void {
+        // To retrieve the data & save it to an existing variable
+
+        if (localStorage.getItem('history')) {
+            const json = localStorage.getItem('history') ?? '';
+            this._tagsHistory = JSON.parse(json);
+        }
+    }
+
     public searchTag(tag: string): void {
         //debugger;
         this.organizeHistory(tag);
@@ -58,5 +70,8 @@ export class GifsService {
         return this.gifList;
     }
 
-    constructor(private httpClient: HttpClient) {}
+    constructor(private httpClient: HttpClient) {
+        this.readLocalStorage();
+        console.log('Readed from local storage');
+    }
 }
