@@ -1,13 +1,17 @@
 <div class="card mb-2 text-center bg-dark">
     <!--crear image-->
 
-    <img
+    <shared-lazy-image
+        [url]="gifInputProperty.images.downsized_medium.url"
+        [alt]="gifInputProperty.title || 'No title'"
+    ></shared-lazy-image>
+    <!-- <img
         [src]="gifInputProperty.images.downsized_medium.url"
         [alt]="gifInputProperty.title"
         class="card-img-top"
-    />
+    /> -->
 
     <div class="card-body text-white">
-        <p class="card-text">{{ gifInputProperty.title }}</p>
+        <p class="card-text">{{ gifInputProperty }}</p>
     </div>
 </div>
