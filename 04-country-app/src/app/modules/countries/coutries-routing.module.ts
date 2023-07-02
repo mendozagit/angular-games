@@ -24,8 +24,8 @@ const routes: Routes = [
         component: CountryPageComponent,
     },
     {
-        path: '',
-        component: CountryPageComponent,
+        path: '**',
+        redirectTo: 'by-capital',
     },
 ];
 
