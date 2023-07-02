@@ -8,7 +8,7 @@ import { CountryPageComponent } from './pages/country-page/country-page.componen
 
 const routes: Routes = [
     {
-        path: 'by-captal',
+        path: 'by-capital',
         component: ByCapitalPageComponent,
     },
     {
@@ -21,6 +21,10 @@ const routes: Routes = [
     },
     {
         path: 'by/:id',
+        component: CountryPageComponent,
+    },
+    {
+        path: '',
         component: CountryPageComponent,
     },
 ];
