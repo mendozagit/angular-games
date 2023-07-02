@@ -5,7 +5,7 @@ import { AboutPageComponent } from './modules/shared/pages/about-page/about-page
 
 const routes: Routes = [
     {
-        path: 'home',
+        path: '',
         component: HomePageComponent,
     },
     {
@@ -14,7 +14,7 @@ const routes: Routes = [
     },
     {
         path: '**',
-        redirectTo: 'home',
+        redirectTo: '',
     },
 ];
 
