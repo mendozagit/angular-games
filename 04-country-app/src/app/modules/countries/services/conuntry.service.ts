@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, of } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 import { Country } from '../interfaces/Country';
 
 @Injectable({ providedIn: 'root' })
@@ -52,6 +52,21 @@ text:string
             catchError((error) => {
                 console.log('COUNTRY API ERROR RESPONSE:', error);
                 return of([]);
+            })
+        );
+    }
+
+    public searchCountryInfo(text: string): Observable<Country | null> {
+        const url = `${this.apiUrl}/alpha/${text}`;
+
+        return this.httpClient.get<Country[]>(url).pipe(
+            // tap((countries) => console.log('TAP 1 ', countries)),
+            // map((countries) => []),
+            // tap((countries) => console.log('TAP 2', countries))
+            map((coutries) => (coutries.length > 0 ? coutries[0] : null)),
+            catchError((error) => {
+                console.log('COUNTRY API ERROR RESPONSE:', error);
+                return of(null);
             })
         );
     }
