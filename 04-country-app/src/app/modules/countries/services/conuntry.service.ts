@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
 import { Country } from '../interfaces/Country';
 
 @Injectable({ providedIn: 'root' })
@@ -16,6 +16,15 @@ text:string
 */
     public searchCapital(text: string): Observable<Country[]> {
         const url = `${this.apiUrl}/capital/${text}`;
-        return this.httpClient.get<Country[]>(url);
+
+        return this.httpClient.get<Country[]>(url).pipe(
+            // tap((countries) => console.log('TAP 1 ', countries)),
+            // map((countries) => []),
+            // tap((countries) => console.log('TAP 2', countries))
+            catchError((error) => {
+                console.log('FISCAL API ERROR RESPONSE:', error);
+                return of([]);
+            })
+        );
     }
 }
