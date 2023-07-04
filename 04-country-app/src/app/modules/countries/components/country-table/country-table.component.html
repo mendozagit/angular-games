@@ -38,7 +38,11 @@
                     <td>{{ country.name.common }}</td>
                     <td>{{ country.capital }}</td>
                     <td>{{ country.population | number }}</td>
-                    <td><a href="#">see more</a></td>
+                    <td>
+                        <a [routerLink]="['/countries/by/', country.cca3]"
+                            >see more</a
+                        >
+                    </td>
                 </tr>
             </tbody>
         </table>
