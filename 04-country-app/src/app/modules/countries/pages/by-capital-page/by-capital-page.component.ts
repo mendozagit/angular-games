@@ -9,12 +9,14 @@ import { Country } from '../../interfaces/Country';
 })
 export class ByCapitalPageComponent {
     public countries: Country[] = [];
-
+    public isLoading: boolean = false;
     constructor(private countryService: CountryService) {}
 
     searchByCapital(textToSearch: string): void {
+        this.isLoading = true;
         this.countryService.searchCapital(textToSearch).subscribe((x) => {
             this.countries = x;
+            this.isLoading = false;
         });
 
         console.log(textToSearch + ' From searchByCapital');

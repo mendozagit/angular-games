@@ -16,7 +16,7 @@
         <hr />
         <!-- tabla resultados -->
 
-        <shared-loading-spiner></shared-loading-spiner>
+        <shared-loading-spiner *ngIf="isLoading"></shared-loading-spiner>
 
         <country-table [countries]="countries"> </country-table>
         <!-- <ul>
