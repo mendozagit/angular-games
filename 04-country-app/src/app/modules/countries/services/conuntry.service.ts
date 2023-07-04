@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, map, of } from 'rxjs';
+import { Observable, catchError, delay, map, of } from 'rxjs';
 import { Country } from '../interfaces/Country';
 
 @Injectable({ providedIn: 'root' })
@@ -9,6 +9,16 @@ export class CountryService {
 
     constructor(private httpClient: HttpClient) {}
 
+    private getCountriesRequest(url: string): Observable<Country[]> {
+        return this.httpClient.get<Country[]>(url).pipe(
+            catchError((error) => {
+                console.log('COUNTRY API ERROR RESPONSE:', error);
+                return of([]);
+            }),
+            delay(2000)
+        );
+    }
+
     /**
      * searchCapital
 text:string
@@ -16,44 +26,17 @@ text:string
 */
     public searchCapital(text: string): Observable<Country[]> {
         const url = `${this.apiUrl}/capital/${text}`;
-
-        return this.httpClient.get<Country[]>(url).pipe(
-            // tap((countries) => console.log('TAP 1 ', countries)),
-            // map((countries) => []),
-            // tap((countries) => console.log('TAP 2', countries))
-            catchError((error) => {
-                console.log('COUNTRY API ERROR RESPONSE:', error);
-                return of([]);
-            })
-        );
+        return this.getCountriesRequest(url);
     }
 
     public searchCountry(text: string): Observable<Country[]> {
         const url = `${this.apiUrl}/name/${text}`;
-
-        return this.httpClient.get<Country[]>(url).pipe(
-            // tap((countries) => console.log('TAP 1 ', countries)),
-            // map((countries) => []),
-            // tap((countries) => console.log('TAP 2', countries))
-            catchError((error) => {
-                console.log('COUNTRY API ERROR RESPONSE:', error);
-                return of([]);
-            })
-        );
+        return this.getCountriesRequest(url);
     }
 
     public searchRegion(text: string): Observable<Country[]> {
         const url = `${this.apiUrl}/region/${text}`;
-
-        return this.httpClient.get<Country[]>(url).pipe(
-            // tap((countries) => console.log('TAP 1 ', countries)),
-            // map((countries) => []),
-            // tap((countries) => console.log('TAP 2', countries))
-            catchError((error) => {
-                console.log('COUNTRY API ERROR RESPONSE:', error);
-                return of([]);
-            })
-        );
+        return this.getCountriesRequest(url);
     }
 
     public searchCountryInfo(text: string): Observable<Country | null> {
