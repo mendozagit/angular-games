@@ -22,7 +22,35 @@ text:string
             // map((countries) => []),
             // tap((countries) => console.log('TAP 2', countries))
             catchError((error) => {
-                console.log('FISCAL API ERROR RESPONSE:', error);
+                console.log('COUNTRY API ERROR RESPONSE:', error);
+                return of([]);
+            })
+        );
+    }
+
+    public searchCountry(text: string): Observable<Country[]> {
+        const url = `${this.apiUrl}/name/${text}`;
+
+        return this.httpClient.get<Country[]>(url).pipe(
+            // tap((countries) => console.log('TAP 1 ', countries)),
+            // map((countries) => []),
+            // tap((countries) => console.log('TAP 2', countries))
+            catchError((error) => {
+                console.log('COUNTRY API ERROR RESPONSE:', error);
+                return of([]);
+            })
+        );
+    }
+
+    public searchRegion(text: string): Observable<Country[]> {
+        const url = `${this.apiUrl}/region/${text}`;
+
+        return this.httpClient.get<Country[]>(url).pipe(
+            // tap((countries) => console.log('TAP 1 ', countries)),
+            // map((countries) => []),
+            // tap((countries) => console.log('TAP 2', countries))
+            catchError((error) => {
+                console.log('COUNTRY API ERROR RESPONSE:', error);
                 return of([]);
             })
         );

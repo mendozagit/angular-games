@@ -1,1 +1,26 @@
-<p>by-region-page works!</p>
+<h2>por región</h2>
+<hr />
+
+<div class="row">
+    <div class="col">
+        <!-- SearchBox -->
+        <shared-search-box
+            placeholder="Buscar por capital"
+            (onEnterPressedEvent)="searchByRegion($event)"
+        ></shared-search-box>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <hr />
+        <!-- tabla resultados -->
+        <country-table [countries]="countries"> </country-table>
+        <!-- <ul>
+            <li *ngFor="let country of countries">
+                {{ country.capital }} -
+                {{ country.population }}
+            </li>
+        </ul> -->
+    </div>
+</div>

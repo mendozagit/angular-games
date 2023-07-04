@@ -14,6 +14,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Icon</th>
                     <th scope="col">Flag Image</th>
+                    <th scope="col">Country</th>
                     <th scope="col">Capital</th>
                     <th scope="col">Population</th>
                     <th scope="col">details</th>
@@ -34,6 +35,7 @@
                             [alt]="country.name.common"
                         />
                     </td>
+                    <td>{{ country.name.common }}</td>
                     <td>{{ country.capital }}</td>
                     <td>{{ country.population | number }}</td>
                     <td><a href="#">see more</a></td>
