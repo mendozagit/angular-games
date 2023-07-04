@@ -1,0 +1,74 @@
+<div
+    *ngIf="countries.length === 0; else table"
+    class="alert alert-warning text-center"
+    role="alert"
+>
+    <strong>No hay paises </strong>
+</div>
+
+<ng-template #table>
+    <div class="table-responsive">
+        <table class="table table-primary">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Icon</th>
+                    <th scope="col">Flag Image</th>
+                    <th scope="col">Capital</th>
+                    <th scope="col">Population</th>
+                    <th scope="col">details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let country of countries; let i = index" class="">
+                    <td>{{ i + 1 }}</td>
+                    <td>
+                        <img
+                            [src]="country.flags.png"
+                            [alt]="country.name.common"
+                        />
+                    </td>
+                    <td>
+                        <img
+                            [src]="country.flags.svg"
+                            [alt]="country.name.common"
+                        />
+                    </td>
+                    <td>{{ country.capital }}</td>
+                    <td>{{ country.population | number }}</td>
+                    <td><a href="#">see more</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</ng-template>
+
+<!-- <ng-template #table>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Icon</th>
+                <th>Flag</th>
+                <th>Name</th>
+                <th>Population</th>
+                <th></th>
+            </tr>
+        </thead>
+    </table>
+
+    <tbody>
+        <tr *ngFor="let country of countries; let i = index">
+            <td>{{ i + 1 }}</td>
+
+            <td>
+                <img [src]="country.flags.svg" [alt]="country.name.common" />
+            </td>
+            <td>{{ country.flag }}</td>
+            <td>{{ country.name.common }}</td>
+            <td>{{ country.capital }}</td>
+            <td>{{ country.population }}</td>
+            <td><a href="$">ver mas</a></td>
+        </tr>
+    </tbody>
+</ng-template> -->
