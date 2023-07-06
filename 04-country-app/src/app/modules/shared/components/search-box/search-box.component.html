@@ -2,7 +2,8 @@
 <input
     type="text"
     class="form-control"
-    [placeholder]="placeholder"
     #searchInput
+    [placeholder]="placeholder"
     (keyup.enter)="onEnterPressed(searchInput.value)"
+    (keyup)="onKeyPressed(searchInput.value)"
 />

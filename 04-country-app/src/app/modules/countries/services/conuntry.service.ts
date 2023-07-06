@@ -14,8 +14,8 @@ export class CountryService {
             catchError((error) => {
                 console.log('COUNTRY API ERROR RESPONSE:', error);
                 return of([]);
-            }),
-            delay(2000)
+            })
+            //delay(2000)
         );
     }
 
