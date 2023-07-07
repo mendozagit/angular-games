@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, delay, map, of } from 'rxjs';
+import { Observable, catchError, delay, map, of, tap } from 'rxjs';
 import { Country } from '../interfaces/country.interface';
 import { ChacheStore } from '../interfaces/cache-store.interface';
 
@@ -31,23 +31,30 @@ export class CountryService {
 text:string
 
 */
-    public searchCapital(text: string): Observable<Country[]> {
-        const url = `${this.apiUrl}/capital/${text}`;
+    public searchCapital(searchText: string): Observable<Country[]> {
+        const url = `${this.apiUrl}/capital/${searchText}`;
+        return this.getCountriesRequest(url).pipe(
+            tap((countries) => {
+                this.cacheStorage.byCapital = {
+                    searchText: searchText,
+                    countries: countries,
+                };
+            })
+        );
+    }
+
+    public searchCountry(searchText: string): Observable<Country[]> {
+        const url = `${this.apiUrl}/name/${searchText}`;
         return this.getCountriesRequest(url);
     }
 
-    public searchCountry(text: string): Observable<Country[]> {
-        const url = `${this.apiUrl}/name/${text}`;
+    public searchRegion(searchText: string): Observable<Country[]> {
+        const url = `${this.apiUrl}/region/${searchText}`;
         return this.getCountriesRequest(url);
     }
 
-    public searchRegion(text: string): Observable<Country[]> {
-        const url = `${this.apiUrl}/region/${text}`;
-        return this.getCountriesRequest(url);
-    }
-
-    public searchCountryInfo(text: string): Observable<Country | null> {
-        const url = `${this.apiUrl}/alpha/${text}`;
+    public searchCountryInfo(searchText: string): Observable<Country | null> {
+        const url = `${this.apiUrl}/alpha/${searchText}`;
 
         return this.httpClient.get<Country[]>(url).pipe(
             // tap((countries) => console.log('TAP 1 ', countries)),
