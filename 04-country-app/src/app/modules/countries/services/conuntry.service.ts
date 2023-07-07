@@ -45,7 +45,14 @@ text:string
 
     public searchCountry(searchText: string): Observable<Country[]> {
         const url = `${this.apiUrl}/name/${searchText}`;
-        return this.getCountriesRequest(url);
+        return this.getCountriesRequest(url).pipe(
+            tap((countries) => {
+                this.cacheStorage.byCountry = {
+                    searchText,
+                    countries,
+                };
+            })
+        );
     }
 
     public searchRegion(searchText: string): Observable<Country[]> {
