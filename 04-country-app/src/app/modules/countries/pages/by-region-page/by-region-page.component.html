@@ -7,6 +7,7 @@
         <shared-search-box
             placeholder="Buscar por capital"
             (onEnterPressedEvent)="searchByRegion($event)"
+            (onDebounceEvent)="searchByRegion($event)"
         ></shared-search-box>
     </div>
 </div>
