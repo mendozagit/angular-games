@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CountryService } from '../../services/conuntry.service';
-import { Country } from '../../interfaces/Country';
+import { Country } from '../../interfaces/country.interface';
 
 @Component({
     selector: 'countries-by-capital-page',
