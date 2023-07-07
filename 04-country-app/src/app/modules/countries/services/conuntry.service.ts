@@ -36,8 +36,8 @@ text:string
         return this.getCountriesRequest(url).pipe(
             tap((countries) => {
                 this.cacheStorage.byCapital = {
-                    searchText: searchText,
-                    countries: countries,
+                    searchText,
+                    countries,
                 };
             })
         );
