@@ -8,14 +8,16 @@ import { Region } from '../interfaces/region.type';
 @Injectable({ providedIn: 'root' })
 export class CountryService {
     private readonly apiUrl = 'https://restcountries.com/v3.1';
-
+    private readonly storageKey: string = 'CacheStorage';
     public cacheStorage: ChacheStore = {
         byCapital: { searchText: '', countries: [] },
         byCountry: { searchText: '', countries: [] },
         byRegion: { region: '', countries: [] },
     };
 
-    constructor(private httpClient: HttpClient) {}
+    constructor(private httpClient: HttpClient) {
+        this.readFropLocalStorage();
+    }
 
     private getCountriesRequest(url: string): Observable<Country[]> {
         return this.httpClient.get<Country[]>(url).pipe(
@@ -40,6 +42,9 @@ text:string
                     searchText,
                     countries,
                 };
+            }),
+            tap(() => {
+                this.writeToLocalStorage();
             })
         );
     }
@@ -52,6 +57,9 @@ text:string
                     searchText,
                     countries,
                 };
+            }),
+            tap(() => {
+                this.writeToLocalStorage();
             })
         );
     }
@@ -64,6 +72,9 @@ text:string
                     countries: countries,
                     region,
                 };
+            }),
+            tap(() => {
+                this.writeToLocalStorage();
             })
         );
     }
@@ -81,5 +92,20 @@ text:string
                 return of(null);
             })
         );
+    }
+
+    private writeToLocalStorage() {
+        localStorage.setItem(
+            this.storageKey,
+            JSON.stringify(this.cacheStorage)
+        );
+    }
+    private readFropLocalStorage() {
+        //debugger;
+        if (localStorage.getItem(this.storageKey)) {
+            this.cacheStorage = JSON.parse(
+                localStorage.getItem(this.storageKey)!
+            );
+        }
     }
 }
