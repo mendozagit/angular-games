@@ -18,4 +18,49 @@
             {{ nameLower | titlecase }}
         </p-card>
     </div>
+
+    <div class="col-12 md:col-6">
+        <p-card header="date pipe expression">
+            <ol>
+                <li>currentDate</li>
+                <li>currentDate | date</li>
+                <li>currentDate | date : 'short'</li>
+                <li>currentDate | date : 'long'</li>
+                <li>currentDate | date : 'MMMM'</li>
+                <li>currentDate | date : 'MMMM dd, yyyy'</li>
+                <li>currentDate | date : 'MMMM dd, yyyy'</li>
+            </ol>
+            <hr />
+            <ol>
+                <li>currentDate | date : 'long': 'America/Mexico_City'</li>
+                <li>currentDate | date : 'long': 'America/New_York'</li>
+                <li>currentDate | date : 'long': 'Europe/London'</li>
+            </ol>
+        </p-card>
+    </div>
+    <div class="col-12 md:col-6">
+        <p-card header="date pipe result">
+            <ol>
+                <li>{{ currentDate }}</li>
+                <li>{{ currentDate | date }}</li>
+                <li>{{ currentDate | date : 'short' }}</li>
+                <li>{{ currentDate | date : 'long' }}</li>
+                <li>{{ currentDate | date : 'MMMM' }}</li>
+                <li>{{ currentDate | date : 'MMMM dd, yyyy' }}</li>
+                <li>{{ currentDate | date : 'MMMM dd, yyyy' }}</li>
+            </ol>
+            <hr />
+            <ol>
+                <li>
+                    {{ currentDate | date : 'long' : 'GMT-6' }}
+                </li>
+                <li>
+                    {{ currentDate | date : 'long' : 'GMT-5' }}
+                </li>
+                <li>
+                    {{ currentDate | date : 'long' : 'GMT+0' }}
+                </li>
+            </ol>
+        </p-card>
+    </div>
 </div>
