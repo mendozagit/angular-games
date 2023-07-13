@@ -1,17 +1,24 @@
 import { NgModule } from '@angular/core';
 
-import { MenuModule } from 'primeng/menu';
 import { ButtonModule } from 'primeng/button';
+
 import { CheckboxModule } from 'primeng/checkbox';
-import { MenubarModule } from 'primeng/menubar';
 import { InputTextModule } from 'primeng/inputtext';
+import { MenubarModule } from 'primeng/menubar';
+import { CardModule } from 'primeng/card';
+import { FieldsetModule } from 'primeng/fieldset';
+import { PanelModule } from 'primeng/panel';
+import { BadgeModule } from 'primeng/badge';
 @NgModule({
     exports: [
-        MenuModule,
         ButtonModule,
+        CardModule,
         CheckboxModule,
-        MenubarModule,
+        FieldsetModule,
         InputTextModule,
+        MenubarModule,
+        PanelModule,
+        BadgeModule,
     ],
 })
 export class NgPrimeModule {}
