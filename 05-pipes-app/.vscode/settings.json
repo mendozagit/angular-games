@@ -1,0 +1,7 @@
+{
+    "schematicspro.schematicsDefaultOptions": {
+        "schematicspro-angular-*": {
+            "style": "css"
+        }
+    }
+}
