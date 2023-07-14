@@ -19,6 +19,7 @@ import { BadgeModule } from 'primeng/badge';
         MenubarModule,
         PanelModule,
         BadgeModule,
+        FieldsetModule,
     ],
 })
 export class NgPrimeModule {}
