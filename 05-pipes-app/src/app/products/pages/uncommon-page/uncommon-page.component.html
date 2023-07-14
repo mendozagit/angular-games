@@ -4,7 +4,18 @@
 
 <div class="grid">
     <div class="col-12 md:col-6">
-        <p-fieldset legend="i18nSelect Pipe" [toggleable]="true"> </p-fieldset>
+        <p-fieldset legend="i18nSelect Pipe" [toggleable]="true">
+            <p>
+                Hola <span style="color: rgb(199, 25, 184)">{{ name }} </span> ,
+                es un placer
+                <span style="color: rgb(199, 25, 184)">
+                    {{ gender | i18nSelect : invitationMap }}
+                </span>
+                a nuestro evento
+            </p>
+
+            <p-button (onClick)="changeClient()"> Change Person </p-button>
+        </p-fieldset>
     </div>
 
     <div class="col-12 md:col-6">
