@@ -37,4 +37,16 @@ export class UncommonPageComponent {
     removeComment(): void {
         this.commentCount++;
     }
+
+    public colorsArray: string[] = [
+        'red',
+        'black',
+        'purple',
+        'white',
+        'green',
+        'orange',
+        'blue',
+        'gold',
+    ];
+    str: string = 'abcdefghij';
 }

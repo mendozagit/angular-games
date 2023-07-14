@@ -32,7 +32,57 @@
         </p-fieldset>
     </div>
     <div class="col-12 md:col-6">
-        <p-fieldset legend="Slice Pipe" [toggleable]="true"> </p-fieldset>
+        <p-fieldset legend="Slice Pipe" [toggleable]="true">
+            <p>input: {{ str }}</p>
+            <div>
+                <table border="1">
+                    <tr>
+                        <th>Input</th>
+                        <th>Pipe</th>
+                        <th>Output</th>
+                    </tr>
+                    <tr>
+                        <td>{{ str }}</td>
+                        <td>str | slice:0:4</td>
+                        <td>
+                            {{ str | slice : 0 : 4 }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>{{ str }}</td>
+                        <td>str | slice : -4</td>
+                        <td>
+                            {{ str | slice : -4 }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>{{ str }}</td>
+                        <td>str | slice : -4 : -2</td>
+                        <td>
+                            {{ str | slice : -4 : -2 }}
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>{{ str }}</td>
+                        <td>str | slice : -100</td>
+                        <td>
+                            {{ str | slice : -100 }}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <hr />
+
+            <p>input array: {{ colorsArray }}</p>
+
+            <ul>
+                <li>array | slice: 0:2 = {{ colorsArray | slice : 0 : 2 }}</li>
+            </ul>
+        </p-fieldset>
     </div>
     <div class="col-12 md:col-6">
         <p-fieldset legend="JSON Pipe" [toggleable]="true"> </p-fieldset>
@@ -44,4 +94,3 @@
         <p-fieldset legend="Async Pipe" [toggleable]="true"> </p-fieldset>
     </div>
 </div>
-d
