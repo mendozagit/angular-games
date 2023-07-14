@@ -35,6 +35,10 @@
                 <li>currentDate | date : 'long': 'America/Mexico_City'</li>
                 <li>currentDate | date : 'long': 'America/New_York'</li>
                 <li>currentDate | date : 'long': 'Europe/London'</li>
+                <li>currentDate | date : 'long': '': 'es-MX'</li>
+                <li>currentDate | date : 'long': '': 'fr-CA'</li>
+                <li>currentDate | date : 'long': '': 'fr-CA'</li>
+                <li>currentDate | date : 'long': '': 'en-US'</li>
             </ol>
         </p-card>
     </div>
@@ -59,6 +63,18 @@
                 </li>
                 <li>
                     {{ currentDate | date : 'long' : 'GMT+0' }}
+                </li>
+                <li>
+                    {{ currentDate | date : 'long' : '' : 'es-MX' }}
+                </li>
+                <li>
+                    {{ currentDate | date : 'long' : '' : 'fr-CA' }}
+                </li>
+                <li>
+                    {{ currentDate | date : 'long' : '' : 'de-CH' }}
+                </li>
+                <li>
+                    {{ currentDate | date : 'long' : '' : 'en-US' }}
                 </li>
             </ol>
         </p-card>
