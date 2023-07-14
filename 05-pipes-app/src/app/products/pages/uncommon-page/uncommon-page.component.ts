@@ -49,4 +49,10 @@ export class UncommonPageComponent {
         'gold',
     ];
     str: string = 'abcdefghij';
+
+    public person = {
+        name: 'Jesus',
+        age: 28,
+        address: 'Guadalajara México',
+    };
 }
