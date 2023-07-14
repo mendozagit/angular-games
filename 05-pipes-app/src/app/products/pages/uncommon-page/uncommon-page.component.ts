@@ -22,4 +22,19 @@ export class UncommonPageComponent {
             this.gender = 'male';
         }
     }
+
+    public commentCount: number = -0;
+    commentMapping = {
+        '=0': 'There are no message.',
+        '=1': 'You have a message.',
+        other: 'You have # messages.',
+    };
+
+    addComment(): void {
+        this.commentCount--;
+    }
+
+    removeComment(): void {
+        this.commentCount++;
+    }
 }

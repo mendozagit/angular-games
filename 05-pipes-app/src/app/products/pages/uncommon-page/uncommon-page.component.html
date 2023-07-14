@@ -19,7 +19,17 @@
     </div>
 
     <div class="col-12 md:col-6">
-        <p-fieldset legend="i18nPlural Pipe" [toggleable]="true"> </p-fieldset>
+        <p-fieldset legend="i18nPlural Pipe" [toggleable]="true">
+            <p>Messages: {{ commentCount }}</p>
+            <p>
+                {{ commentCount | i18nPlural : commentMapping }}
+            </p>
+
+            <p-button (onClick)="addComment()"> Add message </p-button>
+            <span class="mr-2"></span>
+            <!-- Espacio horizontal -->
+            <p-button (onClick)="removeComment()"> Remove message </p-button>
+        </p-fieldset>
     </div>
     <div class="col-12 md:col-6">
         <p-fieldset legend="Slice Pipe" [toggleable]="true"> </p-fieldset>
