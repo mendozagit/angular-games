@@ -1,11 +1,33 @@
 <p-panel header="Basics pipes" class="p-1">
-    <p>custom pipes.</p>
+    <p>custom pipes made by: {{ name | toggleCase : isUpperCase }}</p>
 </p-panel>
 
-<div class="grid">
-    <div class="col-12 md:col-4">
-        <p-card header="uppercase">
-            {{ name | toggleCase }}
-        </p-card>
+<p-toolbar>
+    <div class="p-toolbar-group-start">
+        <p-button
+            label="ToggleCase"
+            icon="pi pi-search"
+            class="mr-2"
+            (click)="toggleCase()"
+        >
+        </p-button>
     </div>
-</div>
+    <div class="p-toolbar-group-end">
+        <p-button
+            label="By Name"
+            icon="pi pi-align-center"
+            styleClass="p-button-success mr-2"
+        ></p-button>
+
+        <p-button
+            label="By fly"
+            icon="pi pi-twitter"
+            styleClass="p-button-help mr-2"
+        ></p-button>
+        <p-button
+            label="By color"
+            icon="pi pi-palette"
+            styleClass="p-button-warning mr-2"
+        ></p-button>
+    </div>
+</p-toolbar>
