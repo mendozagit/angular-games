@@ -8,6 +8,7 @@ import { UncommonPageComponent } from './pages/uncommon-page/uncommon-page.compo
 import { NgPrimeModule } from '../ng-prime/ng-prime.module';
 import { OrderComponent } from './pages/order/order.component';
 import { SharedModule } from '../shared/shared.module';
+import { CanFlyPipe } from './pipes/products.canFlyPipe';
 
 @NgModule({
     declarations: [
@@ -15,6 +16,7 @@ import { SharedModule } from '../shared/shared.module';
         NumberspageComponent,
         UncommonPageComponent,
         OrderComponent,
+        CanFlyPipe,
     ],
     imports: [CommonModule, ProductsRoutingModule, NgPrimeModule, SharedModule],
 })
