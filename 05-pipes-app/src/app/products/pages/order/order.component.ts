@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { ToggleCasePipe } from '../../../shared/pipes/toggle-case.pipe';
+import { Product } from '../../interfaces/products.interface';
+import { Color, Hero } from '../../interfaces/hero.interface';
 
 @Component({
     selector: 'products-order',
@@ -11,6 +13,8 @@ export class OrderComponent implements OnInit {
     public name: string = 'jesus mendoza';
     public isUpperCase: boolean = false;
     public menuItems: MenuItem[] = [];
+    public products: Product[] = [];
+    public heroes: Hero[] = [];
 
     ngOnInit(): void {
         this.menuItems = [
@@ -31,6 +35,34 @@ export class OrderComponent implements OnInit {
                 label: 'PDF',
                 icon: 'pi pi-file-pdf',
             },
+        ];
+
+        this.products = [
+            {
+                Code: '1',
+                Name: 'iPhone',
+                Category: 'Electronic',
+                Quantity: 10,
+            },
+            {
+                Code: '2',
+                Name: 'iPad',
+                Category: 'Electronic',
+                Quantity: 5,
+            },
+            {
+                Code: '3',
+                Name: 'Appe Watch',
+                Category: 'Electronic',
+                Quantity: 3,
+            },
+        ];
+
+        this.heroes = [
+            { name: 'SuoerMan', canFly: true, color: Color.blue },
+            { name: 'Hero 2', canFly: false, color: Color.red },
+            { name: 'Robin', canFly: false, color: Color.green },
+            { name: 'Linerna verde', canFly: true, color: Color.green },
         ];
     }
 

@@ -31,3 +31,46 @@
         ></p-button>
     </div>
 </p-toolbar>
+
+<div class="grid">
+    <div class="col mt-2">
+        <p-panel header="Heros table">
+            <p-table [value]="heroes" [tableStyle]="{ 'min-width': '50rem' }">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Name</th>
+                        <th>Can fly</th>
+                        <th>Color</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-hero>
+                    <tr>
+                        <td>{{ hero.name }}</td>
+                        <td>{{ hero.canFly }}</td>
+                        <td>{{ hero.color.toString() }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-panel>
+    </div>
+    <!-- <div class="col mt-2">
+        <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr>
+                    <td>{{ product.Code }}</td>
+                    <td>{{ product.Name }}</td>
+                    <td>{{ product.Category }}</td>
+                    <td>{{ product.Quantity }}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div> -->
+</div>
