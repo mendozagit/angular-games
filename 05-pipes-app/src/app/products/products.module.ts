@@ -9,6 +9,7 @@ import { NgPrimeModule } from '../ng-prime/ng-prime.module';
 import { OrderComponent } from './pages/order/order.component';
 import { SharedModule } from '../shared/shared.module';
 import { CanFlyPipe } from './pipes/products.canFlyPipe';
+import { SortByPipe } from './pipes/sort-by.pipe';
 
 @NgModule({
     declarations: [
@@ -17,6 +18,7 @@ import { CanFlyPipe } from './pipes/products.canFlyPipe';
         UncommonPageComponent,
         OrderComponent,
         CanFlyPipe,
+        SortByPipe,
     ],
     imports: [CommonModule, ProductsRoutingModule, NgPrimeModule, SharedModule],
 })

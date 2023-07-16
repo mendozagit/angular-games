@@ -3,6 +3,7 @@ import { MenuItem } from 'primeng/api';
 import { ToggleCasePipe } from '../../../shared/pipes/toggle-case.pipe';
 import { Product } from '../../interfaces/products.interface';
 import { Color, Hero } from '../../interfaces/hero.interface';
+import { SortByPipe } from '../../pipes/sort-by.pipe';
 
 @Component({
     selector: 'products-order',
@@ -15,7 +16,7 @@ export class OrderComponent implements OnInit {
     public menuItems: MenuItem[] = [];
     public products: Product[] = [];
     public heroes: Hero[] = [];
-
+    public orderBy: keyof Hero | '' = '';
     ngOnInit(): void {
         this.menuItems = [
             {
@@ -69,7 +70,9 @@ export class OrderComponent implements OnInit {
     toggleCase() {
         this.isUpperCase = !this.isUpperCase;
     }
-
+    changeOrderBy(value: keyof Hero | '') {
+        this.orderBy = value;
+    }
     /*
      <p-button label="New" icon="pi pi-plus" class="mr-2"></p-button>
         <p-button label="Upload" icon="pi pi-upload" styleClass="p-button-success"></p-button>
