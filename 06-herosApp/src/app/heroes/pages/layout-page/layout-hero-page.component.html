@@ -1,3 +1,36 @@
-<p>layout- hero-page works!</p>
+<!-- Creates a layout with a left-positioned sidenav and explicit content. -->
+<mat-sidenav-container fullscreen>
+    <mat-sidenav #sidenav mode="push" [ngStyle]="{ width: '250px' }">
+        <mat-toolbar>
+            <span>Menu</span>
+            <span class="spacer"> </span>
+            <button mat-icon-button (click)="sidenav.toggle()">
+                <mat-icon>menu</mat-icon>
+            </button>
+        </mat-toolbar>
+        <mat-nav-list>
+            <mat-list-item
+                *ngFor="let item of menuItems"
+                [routerLink]="item.url"
+                (click)="sidenav.toggle()"
+            >
+                <mat-icon matListItemIcon> {{ item.icon }} </mat-icon>
+                {{ item.label }}
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+    <!-- <mat-sidenav-content>Main</mat-sidenav-content> -->
 
-<router-outlet></router-outlet>
+    <mat-toolbar color="primary">
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <span class="spacer"></span>
+        <button mat-button>Logout</button>
+    </mat-toolbar>
+
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
+</mat-sidenav-container>
