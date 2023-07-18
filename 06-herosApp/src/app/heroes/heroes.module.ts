@@ -8,6 +8,7 @@ import { ListPageComponent } from './pages/list-page/list-page.component';
 import { HeroPageComponent } from './pages/hero-page/hero-page.component';
 import { LayoutHeroPageComponent } from './pages/layout-page/layout-hero-page.component';
 import { MaterialModule } from '../material/material.module';
+import { HeroCardComponent } from './components/hero-card/hero-card.component';
 
 @NgModule({
     declarations: [
@@ -16,6 +17,7 @@ import { MaterialModule } from '../material/material.module';
         ListPageComponent,
         HeroPageComponent,
         LayoutHeroPageComponent,
+        HeroCardComponent,
     ],
     imports: [CommonModule, HeroesRoutingModule, MaterialModule],
 })
