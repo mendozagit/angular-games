@@ -10,7 +10,7 @@
 
     <!-- TODO: Image -->
 
-    <img [src]="'assets/heroes/' + hero?.id + 'jpg'" alt="" />
+    <img [src]="'assets/heroes/' + hero?.id + '.jpg'" [alt]="hero?.alt_image" />
 
     <mat-card-content class="mt-2">
         <h4>{{ hero?.publisher }}</h4>
