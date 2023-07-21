@@ -23,4 +23,13 @@ export class HeroService {
             .get<Hero>(url)
             .pipe(catchError((e) => of(undefined)));
     }
+
+    getSuggestions(
+        searchText: string,
+        pageSize: number = 6
+    ): Observable<Hero[]> {
+        const url = `${this.baseUrl}/heroes?q=${searchText}&limit=${pageSize}`;
+
+        return this.httpClient.get<Hero[]>(url).pipe(catchError((e) => of([])));
+    }
 }

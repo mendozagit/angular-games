@@ -1,1 +1,9 @@
-<p>search-page works!</p>
+<div class="flex flex-column p-2">
+    <h3>Hero searcher</h3>
+    <mat-form-field>
+        <mat-label>start typing a hero name</mat-label>
+        <input matInput type="text" [formControl]="inputSearch" />
+    </mat-form-field>
+
+    {{ inputSearch.value }}
+</div>
