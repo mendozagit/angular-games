@@ -15,8 +15,9 @@
         <mat-autocomplete
             autoActiveFirstOption
             #autoCompleteControl="matAutocomplete"
+            (optionSelected)="onSelectedChange($event)"
         >
-            <mat-option *ngFor="let hero of heros" [value]="hero.superhero">
+            <mat-option *ngFor="let hero of heros" [value]="hero">
                 {{ hero.superhero }}
             </mat-option>
 
@@ -29,4 +30,6 @@
             >
         </mat-autocomplete>
     </mat-form-field>
+
+    {{ selectedHero | json }}
 </div>
