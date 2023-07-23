@@ -1,1 +1,70 @@
-<p>new-page works!</p>
+<h1>
+    Edit Hero
+    <small>Superman</small>
+</h1>
+
+<mat-divider class="mb-2"></mat-divider>
+
+<div class="grid">
+    <div class="col-12 sm:col-6">
+        <mat-card>
+            <mat-card-content>
+                <div class="grid">
+                    <mat-form-field class="col-12 sm:col-6">
+                        <mat-label>superhero</mat-label>
+                        <input matInput type="text" required />
+                    </mat-form-field>
+
+                    <mat-form-field class="col-12 sm:col-6">
+                        <mat-label>alter_ego</mat-label>
+                        <input matInput type="text" required />
+                    </mat-form-field>
+                    <mat-form-field class="col-12">
+                        <mat-label>first_appearance</mat-label>
+                        <input matInput type="text" required />
+                    </mat-form-field>
+                    <mat-form-field class="col-12">
+                        <mat-label>characters</mat-label>
+                        <input matInput type="text" required />
+                    </mat-form-field>
+                    <mat-form-field class="col-12">
+                        <mat-label>publisher</mat-label>
+                        <mat-select required="">
+                            <mat-option
+                                *ngFor="let publisher of publishers"
+                                [value]="publisher.id"
+                            >
+                                {{ publisher.desc }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="flex justify-content-between">
+                    <button mat-flat-button color="warn">
+                        Delete
+                        <mat-icon>delete</mat-icon>
+                    </button>
+
+                    <button mat-flat-button color="primary">
+                        Save
+                        <mat-icon>save</mat-icon>
+                    </button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="col-12 sm:col-6">
+        <mat-card>
+            <img src="" alt="hero image" mat-card-image />
+        </mat-card>
+    </div>
+</div>
+
+<!-- id: string;
+    superhero: string;
+    publisher?: Publisher;
+    alter_ego: string;
+    first_appearance?: string;
+    characters: string;
+    alt_image?: string; -->
