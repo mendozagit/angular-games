@@ -12,3 +12,15 @@ body {
 .spacer {
     flex: 1 1 auto;
 }
+
+.flex {
+    display: flex;
+}
+
+.justify-content-end {
+    justify-content: flex-end;
+}
+
+.mr-2 {
+    margin-right: 0.5rem; /* Ajusta este valor a lo que necesites */
+}

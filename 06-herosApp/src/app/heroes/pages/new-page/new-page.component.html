@@ -9,27 +9,47 @@
     <div class="col-12 sm:col-6">
         <mat-card>
             <mat-card-content>
-                <div class="grid">
+                <form
+                    [formGroup]="heroForm"
+                    (ngSubmit)="onSubmit()"
+                    class="grid"
+                >
                     <mat-form-field class="col-12 sm:col-6">
-                        <mat-label>superhero</mat-label>
-                        <input matInput type="text" required />
+                        <mat-label>Super hero </mat-label>
+                        <input
+                            matInput
+                            type="text"
+                            formControlName="superhero"
+                        />
                     </mat-form-field>
 
                     <mat-form-field class="col-12 sm:col-6">
                         <mat-label>alter_ego</mat-label>
-                        <input matInput type="text" required />
+                        <input
+                            matInput
+                            type="text"
+                            formControlName="alter_ego"
+                        />
                     </mat-form-field>
                     <mat-form-field class="col-12">
-                        <mat-label>first_appearance</mat-label>
-                        <input matInput type="text" required />
+                        <mat-label> First appearance</mat-label>
+                        <input
+                            matInput
+                            type="text"
+                            formControlName="first_appearance"
+                        />
                     </mat-form-field>
                     <mat-form-field class="col-12">
-                        <mat-label>characters</mat-label>
-                        <input matInput type="text" required />
+                        <mat-label>Characters</mat-label>
+                        <input
+                            matInput
+                            type="text"
+                            formControlName="characters"
+                        />
                     </mat-form-field>
                     <mat-form-field class="col-12">
                         <mat-label>publisher</mat-label>
-                        <mat-select required="">
+                        <mat-select formControlName="publisher">
                             <mat-option
                                 *ngFor="let publisher of publishers"
                                 [value]="publisher.id"
@@ -38,15 +58,38 @@
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
-                </div>
 
+                    <mat-form-field class="col-12">
+                        <mat-label>Alternative image</mat-label>
+                        <input
+                            matInput
+                            type="text"
+                            formControlName="alt_image"
+                        />
+                    </mat-form-field>
+
+                    <!-- <div class="flex justify-content-end">
+                        <button mat-flat-button color="warn" class="mr-2">
+                            Delete
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                        <button mat-flat-button color="primary">
+                            Save
+                            <mat-icon>save</mat-icon>
+                        </button>
+                    </div> -->
+                </form>
                 <div class="flex justify-content-between">
                     <button mat-flat-button color="warn">
                         Delete
                         <mat-icon>delete</mat-icon>
                     </button>
 
-                    <button mat-flat-button color="primary">
+                    <button
+                        mat-flat-button
+                        color="primary"
+                        (click)="onSubmit()"
+                    >
                         Save
                         <mat-icon>save</mat-icon>
                     </button>
