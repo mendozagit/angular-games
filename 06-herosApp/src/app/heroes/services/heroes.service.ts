@@ -49,8 +49,8 @@ export class HeroService {
         const url = `${this.baseUrl}/heroes/${id}`;
 
         return this.httpClient.delete<boolean>(url).pipe(
-            catchError((e) => of(false)),
-            map((response) => true)
+            map((response) => true),
+            catchError((e) => of(false))
         );
     }
 }

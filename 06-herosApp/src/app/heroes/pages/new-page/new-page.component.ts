@@ -3,7 +3,7 @@ import { Hero, Publisher } from '../../interfaces/hero.interface';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HeroService } from '../../services/heroes.service';
-import { switchMap } from 'rxjs';
+import { filter, switchMap, tap } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
@@ -103,23 +103,21 @@ export class NewPageComponent implements OnInit {
             throw new Error('Hero id is required to delete a hero.');
         }
 
-        const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        const dialogResult = this.dialog.open(ConfirmDialogComponent, {
             data: this.heroForm.value,
         });
 
-        dialogRef.afterClosed().subscribe((result) => {
-            console.log('The dialog was closed');
-            // this.animal = result;
+        dialogResult
+            .afterClosed()
 
-            if (!result) return;
-
-            console.log('result', result);
-
-            this.heroService
-                .deleteHeroById(this.hero!.id)
-                .subscribe((isDeleted) => {
-                    this.router.navigateByUrl('/');
-                });
-        });
+            .pipe(
+                filter((result: boolean) => result),
+                switchMap(() => this.heroService.deleteHeroById(this.hero!.id)),
+                filter((wasDeleted: boolean) => wasDeleted),
+                tap((wasDeleted) => console.log(wasDeleted))
+            )
+            .subscribe((result) => {
+                this.router.navigateByUrl('/');
+            });
     }
 }

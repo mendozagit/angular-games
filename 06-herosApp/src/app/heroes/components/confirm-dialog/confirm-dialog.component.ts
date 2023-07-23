@@ -10,7 +10,7 @@ import { Hero } from '../../interfaces/hero.interface';
 export class ConfirmDialogComponent {
     constructor(
         public dialogRef: MatDialogRef<ConfirmDialogComponent>,
-        @Inject(MAT_DIALOG_DATA) public data: Hero
+        @Inject(MAT_DIALOG_DATA) public hero: Hero
     ) {}
 
     onNoClick(): void {
