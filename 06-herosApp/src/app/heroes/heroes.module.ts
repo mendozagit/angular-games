@@ -10,6 +10,7 @@ import { LayoutHeroPageComponent } from './pages/layout-page/layout-hero-page.co
 import { MaterialModule } from '../material/material.module';
 import { HeroCardComponent } from './components/hero-card/hero-card.component';
 import { HeroImagePipe } from './pipes/hero-image-pipe.pipe';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
     declarations: [
@@ -20,6 +21,7 @@ import { HeroImagePipe } from './pipes/hero-image-pipe.pipe';
         LayoutHeroPageComponent,
         HeroCardComponent,
         HeroImagePipe,
+        ConfirmDialogComponent,
     ],
     imports: [CommonModule, HeroesRoutingModule, MaterialModule],
 })

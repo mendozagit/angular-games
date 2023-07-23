@@ -5,6 +5,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { HeroService } from '../../services/heroes.service';
 import { switchMap } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
 
 @Component({
     selector: 'app-new-page',
@@ -16,7 +18,8 @@ export class NewPageComponent implements OnInit {
         private router: Router,
         private heroService: HeroService,
         private activatedRoute: ActivatedRoute,
-        private matSnackBar: MatSnackBar
+        private matSnackBar: MatSnackBar,
+        private dialog: MatDialog
     ) {}
     public hero: Hero | undefined;
     public heroForm = new FormGroup({
@@ -45,23 +48,6 @@ export class NewPageComponent implements OnInit {
                 this.heroForm.reset(this.hero);
                 return;
             });
-
-        // this.activatedRoute.params.subscribe((params) => {
-        //     const id = params['id'];
-
-        //     this.heroService.getHeroById(id).subscribe((response) => {
-        //         this.hero = response;
-        //         console.log('hero', this.hero);
-        //     });
-        // });
-
-        // this.activatedRoute.params.pipe(
-
-        // th
-
-        // ).subscribe();
-
-        //console.log('activatedRoute', this.activatedRoute.params);
     }
     public publishers = [
         {
@@ -109,6 +95,22 @@ export class NewPageComponent implements OnInit {
     showMessage(message: string): void {
         this.matSnackBar.open(message, 'done', {
             duration: 2500,
+        });
+    }
+
+    onDeleteHero(): void {
+        if (!this.hero?.id) {
+            throw new Error('Hero id is required to delete a hero.');
+        }
+
+        const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+            data: this.heroForm.value,
+        });
+
+        dialogRef.afterClosed().subscribe((result) => {
+            console.log('The dialog was closed');
+            // this.animal = result;
+            console.log('result', result);
         });
     }
 }
