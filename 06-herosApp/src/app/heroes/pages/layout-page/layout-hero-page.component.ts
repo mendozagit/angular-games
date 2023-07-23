@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../../auth/services/auth.service';
+import { User } from 'src/app/auth/interfaces/user.interface';
 
 @Component({
     selector: 'hero-layout-page',
@@ -6,6 +9,7 @@ import { Component } from '@angular/core';
     styles: [],
 })
 export class LayoutHeroPageComponent {
+    constructor(private authService: AuthService, private router: Router) {}
     public menuItems = [
         {
             label: 'List',
@@ -23,4 +27,13 @@ export class LayoutHeroPageComponent {
             url: './search',
         },
     ];
+
+    public onLogout(): void {
+        this.authService.logout();
+        this.router.navigateByUrl('/auth/login');
+    }
+
+    get currentUser(): User | undefined {
+        return this.authService.currentUser;
+    }
 }
