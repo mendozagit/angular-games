@@ -21,7 +21,8 @@
       "publisher": "DC Comics",
       "alter_ego": "Kal-El",
       "first_appearance": "Action Comics #1",
-      "characters": "Kal-El"
+      "characters": "Kal-El",
+      "alt_image": "https://cdn.pixabay.com/photo/2020/07/11/04/41/superman-5392758_1280.png"
     },
     {
       "id": "dc-flash",
@@ -174,7 +175,7 @@
       "alter_ego": "Mendoza",
       "first_appearance": "Primer aparicion de jesis",
       "characters": "personaje 1",
-      "alt_image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Ftenor.com%2Fview%2Fyisus-mujer-gif-7998779&psig=AOvVaw20H12Lm9DI-Kw6FLPa8tGo&ust=1690225505819000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNie-enCpYADFQAAAAAdAAAAABAE"
+      "alt_image": ""
     },
     {
       "id": "A7UJDh1",

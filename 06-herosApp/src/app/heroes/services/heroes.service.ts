@@ -40,7 +40,7 @@ export class HeroService {
     updateHero(hero: Hero): Observable<Hero> {
         if (!hero.id) throw new Error('Hero id is missing.');
 
-        const url = `${this.baseUrl}/heroes`;
+        const url = `${this.baseUrl}/heroes/${hero.id}`;
         return this.httpClient.patch<Hero>(url, hero);
     }
     deleteHeroById(id: string): Observable<boolean> {
