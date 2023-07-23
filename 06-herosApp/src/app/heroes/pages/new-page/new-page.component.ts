@@ -11,7 +11,7 @@ import { HeroService } from '../../services/heroes.service';
 })
 export class NewPageComponent {
     constructor(private router: Router, private heroService: HeroService) {}
-    public hero?: Hero;
+    public hero!: Hero;
     public heroForm = new FormGroup({
         id: new FormControl(''),
         superhero: new FormControl('', { nonNullable: true }),
