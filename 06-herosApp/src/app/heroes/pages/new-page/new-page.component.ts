@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HeroService } from '../../services/heroes.service';
 import { switchMap } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-new-page',
@@ -14,7 +15,8 @@ export class NewPageComponent implements OnInit {
     constructor(
         private router: Router,
         private heroService: HeroService,
-        private activatedRoute: ActivatedRoute
+        private activatedRoute: ActivatedRoute,
+        private matSnackBar: MatSnackBar
     ) {}
     public hero: Hero | undefined;
     public heroForm = new FormGroup({
@@ -81,6 +83,8 @@ export class NewPageComponent implements OnInit {
             // update
             this.heroService.updateHero(this.hero).subscribe((response) => {
                 // show confirmation message
+
+                this.showMessage('Hero updated succesfully.');
             });
             return;
         }
@@ -88,6 +92,9 @@ export class NewPageComponent implements OnInit {
         // Insert
         this.heroService.addHero(this.hero).subscribe((response) => {
             // show confirmation message and redirect  /heros/edit/hero.id
+
+            this.showMessage('Hero created succesfully.');
+            this.router.navigate(['/heros/edit', this.hero?.id]);
         });
 
         console.log({
@@ -97,5 +104,11 @@ export class NewPageComponent implements OnInit {
         });
 
         //this.router.navigateByUrl('heroes/list');
+    }
+
+    showMessage(message: string): void {
+        this.matSnackBar.open(message, 'done', {
+            duration: 2500,
+        });
     }
 }

@@ -1,6 +1,6 @@
 <h1>
-    Edit Hero
-    <small>Superman</small>
+    {{ this?.hero?.id ? 'Edit' : 'Add' }}
+    <small>Hero</small>
 </h1>
 
 <mat-divider class="mb-2"></mat-divider>
@@ -69,11 +69,11 @@
                     </mat-form-field>
                 </form>
                 <div class="flex justify-content-between">
-                    <button mat-flat-button color="warn">
+                    <button *ngIf="this.hero?.id" mat-flat-button color="warn">
                         Delete
                         <mat-icon>delete</mat-icon>
                     </button>
-
+                    <span></span>
                     <button
                         mat-flat-button
                         color="primary"
