@@ -37,7 +37,7 @@ export class NewPageComponent implements OnInit {
                 )
             )
             .subscribe((hero) => {
-                if (!hero) return this.router.navigateByUrl('/heroes/list');
+                if (!hero) this.router.navigateByUrl('/heroes/list');
 
                 this.hero = hero;
                 this.heroForm.reset(this.hero);
