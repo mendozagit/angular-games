@@ -110,7 +110,16 @@ export class NewPageComponent implements OnInit {
         dialogRef.afterClosed().subscribe((result) => {
             console.log('The dialog was closed');
             // this.animal = result;
+
+            if (!result) return;
+
             console.log('result', result);
+
+            this.heroService
+                .deleteHeroById(this.hero!.id)
+                .subscribe((isDeleted) => {
+                    this.router.navigateByUrl('/');
+                });
         });
     }
 }
