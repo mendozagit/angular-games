@@ -35,11 +35,13 @@ export class AuthService {
     }
     logout(): void {
         this.user = undefined;
-        //localStorage.clear();
+        localStorage.clear();
     }
 
     checkAuthStatus(): Observable<boolean> {
-        if (!localStorage.getItem('token')) of(false);
+        if (!localStorage.getItem('token')) return of(false);
+
+        console.log('localStorage.getItem', !localStorage.getItem('token'));
 
         const token = localStorage.getItem('token');
 
@@ -49,6 +51,7 @@ export class AuthService {
         return this.httpClient.get<User>(url).pipe(
             tap((user) => (this.user = user)),
             map((user) => !!user),
+
             catchError((e) => of(false))
         );
     }
