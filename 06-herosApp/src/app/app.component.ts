@@ -6,13 +6,8 @@ import { AuthService } from './auth/services/auth.service';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
     title = 'herosApp';
 
     constructor(private authService: AuthService) {}
-    ngOnInit(): void {
-        this.authService.checkAuthStatus().subscribe((isAuthorized) => {
-            console.log('checkAuthStatus done');
-        });
-    }
 }
