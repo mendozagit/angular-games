@@ -5,12 +5,14 @@ import { HeroesModule } from './heroes/heroes.module';
 import { Error404PageComponent } from './shared/pages/error404-page/error404-page.component';
 import { authCanActivateGuard } from './auth/guards/auth-can-activate.guard';
 import { authCanMatchGuard } from './auth/guards/auth-can-match.guard';
+import { publicGuard } from './auth/guards/public.guard';
 
 const routes: Routes = [
     {
         path: 'auth',
         loadChildren: () =>
             import('./auth/auth.module').then((m) => AuthModule),
+        canActivate: [publicGuard],
     },
     {
         path: 'heroes',
