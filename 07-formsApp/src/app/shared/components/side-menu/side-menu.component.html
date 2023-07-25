@@ -1,0 +1,16 @@
+<h2>Pages</h2>
+<hr />
+
+<h3 class="mt-3">Reactive</h3>
+
+<ul class="list-group">
+    <li
+        *ngFor="let item of sideMenuItems"
+        class="list-group-item"
+        routerLinkActive="active"
+        [routerLink]="item.route"
+        [routerLinkActiveOptions]="{ exact: true }"
+    >
+        {{ item.title }}
+    </li>
+</ul>
