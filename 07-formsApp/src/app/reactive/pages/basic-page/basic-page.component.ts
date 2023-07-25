@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, Validators, FormGroup } from '@angular/forms';
 
 @Component({
     templateUrl: './basic-page.component.html',
@@ -15,15 +15,17 @@ export class BasicPageComponent {
     // });
 
     public form: FormGroup = this.formBuilder.group({
-        name: [''],
-        price: [0],
-        inStorage: [0],
+        name: ['', [Validators.required, Validators.minLength(3)]],
+        price: [0, [Validators.required, Validators.min(0)]],
+        inStorage: [0, [Validators.required, Validators.min(0)]],
     });
 
     /**
      * onSubmit
      */
     public onSubmit() {
-        console.log('form', this.form);
+        if (this.form.valid) {
+            console.log('form', this.form);
+        } else console.log('invalid form');
     }
 }
