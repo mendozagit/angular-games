@@ -3,7 +3,7 @@
 
 <div class="row">
     <div class="col">
-        <form [formGroup]="form" (ngSubmit)="onSubmit()" autocomplete="off">
+        <form [formGroup]="myForm" (ngSubmit)="onSave()" autocomplete="off">
             <!-- Campo de producto -->
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Producto</label>
@@ -11,13 +11,15 @@
                     <input
                         type="text"
                         class="form-control"
-                        placeholder="Nombre del producto"
                         formControlName="name"
+                        placeholder="Nombre del producto"
                     />
 
-                    <span class="form-text text-danger">
-                        <!-- Debe de ser de 3 letras -->
-                        error message
+                    <span
+                        *ngIf="isValidField('name')"
+                        class="form-text text-danger"
+                    >
+                        {{ getFieldError('name') }}
                     </span>
                 </div>
             </div>
@@ -29,11 +31,15 @@
                     <input
                         type="number"
                         class="form-control"
-                        placeholder="Precio del producto"
                         formControlName="price"
+                        placeholder="Precio del producto"
                     />
-                    <span class="form-text text-danger">
-                        El precio debe de ser 0 o mayor
+
+                    <span
+                        *ngIf="isValidField('price')"
+                        class="form-text text-danger"
+                    >
+                        El precio debe de ser 0 o mayor.
                     </span>
                 </div>
             </div>
@@ -45,11 +51,14 @@
                     <input
                         type="number"
                         class="form-control"
-                        placeholder="Existencias del producto"
                         formControlName="inStorage"
+                        placeholder="Existencias del producto"
                     />
 
-                    <span class="form-text text-danger">
+                    <span
+                        *ngIf="isValidField('inStorage')"
+                        class="form-text text-danger"
+                    >
                         Las existencias deben de ser 0 o mayor
                     </span>
                 </div>
@@ -69,27 +78,27 @@
 <div class="row">
     <div class="col">
         <span>Valid</span>
-        <pre>{{ form.valid | json }}</pre>
+        <pre>{{ myForm.valid | json }}</pre>
 
         <span>Pristine</span>
-        <pre>{{ form.pristine | json }}</pre>
+        <pre>{{ myForm.pristine | json }}</pre>
 
         <span>Touched</span>
-        <pre>{{ form.touched | json }}</pre>
+        <pre>{{ myForm.touched | json }}</pre>
 
         <span>Value</span>
-        <pre>{{ form.value | json }}</pre>
+        <pre>{{ myForm.value | json }}</pre>
 
         <span>Precio</span>
-        <pre>{{ form.controls['price'].value | json }}</pre>
+        <pre>{{ myForm.controls['price'].value | json }}</pre>
 
-        <span>Precio Errors</span>
-        <pre>{{ form.controls['price'].errors | json }}</pre>
+        <span>Precio - Errors</span>
+        <pre>{{ myForm.controls['price'].errors | json }}</pre>
 
         <span>Producto</span>
-        <pre>{{ form.controls['name'].value | json }}</pre>
+        <pre>{{ myForm.controls['name'].value | json }}</pre>
 
-        <span>Producto Errors</span>
-        <pre>{{ form.controls['name'].errors | json }}</pre>
+        <span>Producto</span>
+        <pre>{{ myForm.controls['name'].errors | json }}</pre>
     </div>
 </div>
