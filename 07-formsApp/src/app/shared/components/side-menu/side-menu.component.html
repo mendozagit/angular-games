@@ -14,3 +14,17 @@
         {{ item.title }}
     </li>
 </ul>
+
+<h3 class="mt-3">Validations</h3>
+
+<ul class="list-group">
+    <li
+        *ngFor="let item of authMenuItems"
+        class="list-group-item"
+        routerLinkActive="active"
+        [routerLink]="item.route"
+        [routerLinkActiveOptions]="{ exact: true }"
+    >
+        {{ item.title }}
+    </li>
+</ul>
