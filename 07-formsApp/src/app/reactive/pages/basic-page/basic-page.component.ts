@@ -1,11 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, Validators, FormGroup } from '@angular/forms';
+
+const product1 = {
+    name: 'Coca-Cola',
+    price: 25,
+    inStorage: 300,
+};
 
 @Component({
     templateUrl: './basic-page.component.html',
     styles: [],
 })
-export class BasicPageComponent {
+export class BasicPageComponent implements OnInit {
     constructor(private formBuilder: FormBuilder) {}
 
     // public form = new FormGroup({
@@ -26,6 +32,10 @@ export class BasicPageComponent {
     public onSubmit() {
         if (this.form.valid) {
             console.log('form', this.form);
+            this.form.reset({ price: 0, inStorage: 0 });
         } else console.log('invalid form');
+    }
+    ngOnInit(): void {
+        this.form.reset(product1);
     }
 }
