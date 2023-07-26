@@ -7,8 +7,10 @@
     <div class="row mb-3">
         <div class="col">
             <label class="form-label">Continent</label>
-            <select class="form-control">
+            <select class="form-control" formControlName="region">
                 <option value="">select a continent</option>
+                <option value="">America</option>
+                <option value="">Africa</option>
             </select>
         </div>
     </div>
@@ -18,3 +20,5 @@
 <code>
     {{ form.value | json }}
 </code>
+
+<p>is form valid: {{ form.valid }}</p>
