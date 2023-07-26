@@ -15,6 +15,8 @@ export class CountryService {
     ];
 
     get regions(): Region[] {
-        return [...this._regions];
+        //return [...this._regions];
+        // debugger;
+        return structuredClone(this._regions);
     }
 }
