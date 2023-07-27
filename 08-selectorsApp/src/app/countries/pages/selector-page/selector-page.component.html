@@ -19,7 +19,7 @@
 
     <div class="row mb-3" *ngIf="countriesByRegion.length > 0">
         <div class="col">
-            <label class="form-label">Continent</label>
+            <label class="form-label">Country</label>
             <select class="form-control" formControlName="country">
                 <option value="">select a country</option>
                 <option
@@ -34,9 +34,9 @@
 
     <!-- borders -->
 
-    <div class="row mb-3">
+    <div class="row mb-3" *ngIf="bordersByCountry.length > 0">
         <div class="col">
-            <label class="form-label">Continent</label>
+            <label class="form-label">Borders</label>
             <select class="form-control" formControlName="border">
                 <option value="">select a country's border</option>
                 <option
@@ -49,10 +49,11 @@
         </div>
     </div>
 </form>
+<br />
+<hr />
 
-<h3>Form object</h3>
+<h3>Reactive form object in JSON</h3>
 <code>
     {{ form.value | json }}
 </code>
-
-<p>is form valid: {{ form.valid }}</p>
+<br />
