@@ -22,8 +22,10 @@ export class SelectorPageComponent implements OnInit {
     });
     public regionOnChangeSubcription: Subscription | undefined;
     public countryOnChangeSubcription: Subscription | undefined;
+    public borderOnChangeSubcription: Subscription | undefined;
+
     public countriesByRegion: SmallCountry[] = [];
-    public bordersByCountry: string[] = [];
+    public bordersByCountry: SmallCountry[] = [];
 
     get regions(): Region[] {
         return this.countryService.regions;
@@ -31,6 +33,7 @@ export class SelectorPageComponent implements OnInit {
     ngOnInit(): void {
         this.onRegionChange();
         this.onCountryChange();
+        this.onBorderChange();
     }
 
     onRegionChange(): void {
@@ -61,11 +64,32 @@ export class SelectorPageComponent implements OnInit {
                 filter((alphaCode: string) => alphaCode.length > 0),
                 switchMap((alphaCode) =>
                     this.countryService.getCountryByAlphaCode(alphaCode)
+                ),
+                switchMap((smallCountry) =>
+                    this.countryService.getCountriesByBorders(
+                        smallCountry.borders
+                    )
                 )
             )
-            .subscribe((smallCountry) => {
-                console.log('onCountryChange', { smallCountry });
-                this.bordersByCountry = smallCountry.borders;
+            .subscribe((smallCountries) => {
+                console.log('onCountryChange', { smallCountries });
+                this.bordersByCountry = smallCountries;
+            });
+    }
+    onBorderChange(): void {
+        this.borderOnChangeSubcription = this.form
+            .get('border')
+            ?.valueChanges.pipe(
+                tap((border) => {
+                    console.log('border', { border });
+                }),
+                filter((border: string) => border.length > 0),
+                switchMap((border) =>
+                    this.countryService.getCountryByAlphaCode(border)
+                )
+            )
+            .subscribe((country) => {
+                console.log('onBorderChange: subscribe', { country });
             });
     }
 }
