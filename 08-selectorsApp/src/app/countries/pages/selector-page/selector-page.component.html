@@ -31,6 +31,23 @@
             </select>
         </div>
     </div>
+
+    <!-- borders -->
+
+    <div class="row mb-3">
+        <div class="col">
+            <label class="form-label">Continent</label>
+            <select class="form-control" formControlName="border">
+                <option value="">select a country's border</option>
+                <option
+                    [value]="border"
+                    *ngFor="let border of bordersByCountry"
+                >
+                    {{ border }}
+                </option>
+            </select>
+        </div>
+    </div>
 </form>
 
 <h3>Form object</h3>
